@@ -3,4 +3,5 @@
 ## Integrantes: 
 - Klaus Mollan Neyra
 - Juan de Dios Quiroz Rodriguez
-- Toshiro Ysique Lopez
+- Toshiro Ysique Lopez   
+- Jorge Laban Hijar
