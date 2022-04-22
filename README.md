@@ -6,3 +6,4 @@
 - Aldair Cuarez
 - Rodrigo Calle Galdos
 - Daniel Santillán Ávila
+- Toshiro Ysique Lopez
