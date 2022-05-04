@@ -1,0 +1,28 @@
+<div class="container">
+
+  <img src="../../../../assets/img/logo.png" alt="Findevents">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="password" type="password">
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-submit">
+      LOGIN
+    </button>
+
+  </form>
+
+  <span style="color: white">You don't have an account yet, <a (click)="navigateToRegister()">sign up</a></span>
+
+
+</div>
+
+
