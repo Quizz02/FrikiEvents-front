@@ -1,0 +1,97 @@
+<div class="container">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form"
+        enctype="multipart/form-data">
+
+    <h2>Information</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title of event</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Short description</mat-label>
+      <textarea matInput formControlName="information" #a></textarea>
+      <mat-hint align="end"><p>{{a.value.length}} / 130</p></mat-hint>
+    </mat-form-field>
+
+    <div class="flex-container-img">
+      <p>Choose an image for the event logo:</p>
+      <div class="img-upload" [style.background]="'url(' + pathImg + ')'">
+        <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
+        <input type="file" name="image" id="input-img" (change)="onChange()"
+               style="display: none" accept="image/png, image/jpeg, image/jpg">
+      </div>
+    </div>
+
+    <h2>Event address</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="countryId" (ngModelChange)="getCities($event)">
+        <mat-option *ngFor="let country of countries" [value]="country.id">
+          {{country.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="cityId" (ngModelChange)="getDistricts($event)">
+        <mat-option *ngFor="let city of cities" [value]="city.id">
+          {{city.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>District</mat-label>
+      <mat-select formControlName="districtId">
+        <mat-option *ngFor="let district of districts" [value]="district.id">
+          {{district.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Place / address</mat-label>
+      <input matInput formControlName="place">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Reference</mat-label>
+      <input matInput formControlName="reference">
+    </mat-form-field>
+
+    <h2>Business information</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Number of entries</mat-label>
+      <input matInput formControlName="quantity" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+        <input matStartDate formControlName="startDate" placeholder="Start date">
+        <input matEndDate formControlName="endDate" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-error *ngIf="form.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="form.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <button mat-raised-button
+            type="submit"
+            class="btn-submit"
+            [disabled]="!form.valid">
+      SAVE
+    </button>
+
+  </form>
+
+</div>
+
