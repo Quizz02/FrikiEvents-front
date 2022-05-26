@@ -5,9 +5,9 @@
     <h2>Itineraries</h2>
 
     <div class="itineraries-component" *ngFor="let i of listItineraries">
-      <mat-form-field appearance="fill">
+      <mat-form-field id="itineraryInput" appearance="fill">
         <mat-label>Itinerary {{ i }}</mat-label>
-        <input matInput [formControlName]="'itinerary'+ i">
+        <input id="itineraryMatInput" matInput [formControlName]="'itinerary'+ i">
       </mat-form-field>
     </div>
     <button mat-icon-button (click)="addItinerary()">
@@ -15,7 +15,7 @@
     </button>
 
     <br>
-    <button mat-raised-button type="submit" [disabled]="itineraries.invalid" class="btn-submit">
+    <button id="saveItineraryBtn" mat-raised-button type="submit" [disabled]="itineraries.invalid" class="btn-submit">
       SAVE
     </button>
 
@@ -54,7 +54,7 @@
     </button>
 
     <br>
-    <button mat-raised-button type="submit" [disabled]="information.invalid" class="btn-submit">
+    <button id="saveDetailedInfoBtn" mat-raised-button type="submit" [disabled]="information.invalid" class="btn-submit">
       SAVE
     </button>
 

@@ -7,11 +7,11 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Title of event</mat-label>
-      <input matInput formControlName="name">
+      <input id="eventTitleInput" matInput formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Short description</mat-label>
-      <textarea matInput formControlName="information" #a></textarea>
+      <textarea id="eventdescriptionInput" matInput formControlName="information" #a></textarea>
       <mat-hint align="end"><p>{{a.value.length}} / 130</p></mat-hint>
     </mat-form-field>
 
@@ -26,7 +26,7 @@
 
     <h2>Event address</h2>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field id="countrySelector" appearance="fill">
       <mat-label>Country</mat-label>
       <mat-select formControlName="countryId" (ngModelChange)="getCities($event)">
         <mat-option *ngFor="let country of countries" [value]="country.id">
@@ -34,7 +34,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field id="cityInput" appearance="fill">
       <mat-label>City</mat-label>
       <mat-select formControlName="cityId" (ngModelChange)="getDistricts($event)">
         <mat-option *ngFor="let city of cities" [value]="city.id">
@@ -42,7 +42,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field id="citySelector" appearance="fill">
       <mat-label>District</mat-label>
       <mat-select formControlName="districtId">
         <mat-option *ngFor="let district of districts" [value]="district.id">
@@ -84,7 +84,7 @@
 
     <br>
 
-    <button mat-raised-button
+    <button id="saveBtn" mat-raised-button
             type="submit"
             class="btn-submit"
             [disabled]="!form.valid">
